@@ -1,6 +1,12 @@
 #! bin/bash
 
 FILE=srcs/install_dir/one_time_file
+if [ $1 -eq 1 ]
+then
+	minikube delete
+	echo "create one time file."
+	touch $FILE
+fi
 minikube config set vm-driver virtualbox
 minikube start --memory 3000 --bootstrapper=kubeadm
 minikube docker-env
