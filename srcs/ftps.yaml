@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps-alpine
+  labels:
+    run: ftps-alpine
+spec:
+  ports:
+  - port: 21
+    targetPort: 21
+    protocol: TCP
+    name: ftps21
+  - port: 20
+    targetPort: 20
+    protocol: TCP
+    name: ftps20
+  - port: 30025
+    targetPort: 30025
+    protocol: TCP
+    name: ftps30025
+  - port: 30026
+    targetPort: 30026
+    protocol: TCP
+    name: ftps30026
+
+  selector:
+    run: ftps-alpine
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps-alpine
+spec:
+  selector:
+    matchLabels:
+      run: ftps-alpine
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: ftps-alpine
+    spec:
+      containers:
+      - name: ftps-alpine
+        image: ftps_alpine
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 21
+        - containerPort: 20
+        - containerPort: 30025
+        - containerPort: 30026
+

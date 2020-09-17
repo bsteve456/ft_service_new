@@ -26,5 +26,7 @@ if test -f "$FILE"; then
 fi
 kubectl apply -f ./srcs/install_dir/config.yaml
 docker build -t nginx-alpine ./srcs/nginx/
+docker build -t ftps_alpine ./srcs/ftps/
+
 kubectl apply -k ./srcs/
 minikube dashboard
