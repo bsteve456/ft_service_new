@@ -27,6 +27,10 @@ fi
 kubectl apply -f ./srcs/install_dir/config.yaml
 docker build -t nginx-alpine ./srcs/nginx/
 docker build -t ftps_alpine ./srcs/ftps/
+docker build -t mysql_alpine ./srcs/mysql/
+docker build -t wordpress_alpine ./srcs/wordpress/
+docker build -t phpmyadmin_alpine ./srcs/phpmyadmin/
+
 
 kubectl apply -k ./srcs/
 minikube dashboard
