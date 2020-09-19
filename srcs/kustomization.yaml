@@ -7,3 +7,6 @@ resources:
 - mysql-deployment.yaml
 - wordpress-deployment.yaml
 - phpmyadmin.yaml
+- telegraf.yaml
+- grafana.yaml
+- influxdb.yaml
