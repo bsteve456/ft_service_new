@@ -37,11 +37,15 @@ spec:
       - image: phpmyadmin_alpine 
         imagePullPolicy: Never
         name: phpmyadmin
-        #      env:
-        #   - name: WORDPRESS_DB_HOST
-        #   value: localhost
-        # - name: WORDPRESS_DB_PASSWORD
-        #   value: password
         ports:
         - containerPort: 5000
           name: phpmyadmin
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+            httpHeaders:
+            - name: Custom-Header2
+              value: Awesome1
+          initialDelaySeconds: 3
+          periodSeconds: 3

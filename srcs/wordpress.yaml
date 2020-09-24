@@ -55,6 +55,15 @@ spec:
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/localhost/htdocs/wordpress
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5050
+            httpHeaders:
+            - name: Custom-Header
+              value: Awesome
+          initialDelaySeconds: 3
+          periodSeconds: 3
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:

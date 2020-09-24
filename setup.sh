@@ -7,7 +7,7 @@ then
 	touch $FILE
 fi
 minikube config set vm-driver virtualbox
-minikube start --memory 3000 --bootstrapper=kubeadm
+minikube start --driver=docker --memory 3000 --bootstrapper=kubeadm
 minikube docker-env
 eval $(minikube -p minikube docker-env)
 kubectl get configmap kube-proxy -n kube-system -o yaml | \

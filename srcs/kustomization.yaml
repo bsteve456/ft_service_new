@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
 - nginx.yaml
 - ftps.yaml
-- mysql-deployment.yaml
-- wordpress-deployment.yaml
+- mysql.yaml
+- wordpress.yaml
 - phpmyadmin.yaml
 - telegraf.yaml
 - grafana.yaml

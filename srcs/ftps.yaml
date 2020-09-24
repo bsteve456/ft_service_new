@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftps-alpine
+  name: ftps
   labels:
-    run: ftps-alpine
+    run: ftps
 spec:
   ports:
   - port: 21
@@ -24,7 +24,7 @@ spec:
     name: ftps30026
 
   selector:
-    run: ftps-alpine
+    run: ftps
   type: LoadBalancer
 
 ---
@@ -32,19 +32,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps-alpine
+  name: ftps
 spec:
   selector:
     matchLabels:
-      run: ftps-alpine
+      run: ftps
   replicas: 1
   template:
     metadata:
       labels:
-        run: ftps-alpine
+        run: ftps
     spec:
       containers:
-      - name: ftps-alpine
+      - name: ftps
         image: ftps_alpine
         imagePullPolicy: Never
         ports:
