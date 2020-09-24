@@ -16,7 +16,8 @@ ADD default.conf etc/nginx/conf.d/
 
 ADD sshd_config etc/ssh/sshd_config
 
-RUN /etc/init.d/sshd start
+#RUN /etc/init.d/sshd start
+RUN echo "root:root" | chpasswd
 
 RUN mkdir /run/nginx && touch /run/nginx/nginx.pid
 

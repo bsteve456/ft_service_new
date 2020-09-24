@@ -4,7 +4,7 @@ RUN apk add openrc
 
 RUN apk update && apk add vim
 
-RUN apk add mysql mysql-client && mysql_install_db --user=mysql --datadir=/var/lib/mysql
+RUN apk add mysql mysql-client
 
 RUN rm etc/my.cnf /etc/my.cnf.d/mariadb-server.cnf
 

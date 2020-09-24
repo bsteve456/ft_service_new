@@ -23,5 +23,7 @@ fi
 echo "finish";
 
 mv /usr/share/wordpress/* /var/www/localhost/htdocs/wordpress/
-rc-service php-fpm7 start
-tail -f /dev/null
+#rc-service php-fpm7 start
+php-fpm7
+nginx -g 'daemon off;'
+#tail -f /dev/null

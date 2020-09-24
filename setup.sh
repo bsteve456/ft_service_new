@@ -3,7 +3,6 @@
 FILE=srcs/install_dir/one_time_file
 if [ $1 -eq 1 ]
 then
-	minikube delete -p minikube
 	echo "create one time file."
 	touch $FILE
 fi
@@ -24,7 +23,7 @@ if test -f "$FILE"; then
 	kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 	rm $FILE
 fi
-sed -i "s/mini_ip/$(minikube ip)/" srcs/telegraf/telegraf.conf
+sed -e "s/mini_ip/$(minikube ip)/" srcs/telegraf/telegraf_sample.conf > srcs/telegraf/telegraf.conf
 kubectl apply -f ./srcs/install_dir/config.yaml
 docker build -t nginx-alpine ./srcs/nginx/
 docker build -t ftps_alpine ./srcs/ftps/
@@ -35,6 +34,6 @@ docker build -t influxdb_alpine ./srcs/influxdb/
 docker build -t telegraf_alpine ./srcs/telegraf/
 docker build -t grafana_alpine ./srcs/grafana/
 kubectl apply -k ./srcs/
-sed -i "s/$(minikube ip)/mini_ip/" srcs/telegraf/telegraf.conf
+rm srcs/telegraf/telegraf.conf
 
 minikube dashboard
