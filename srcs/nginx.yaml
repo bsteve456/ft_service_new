@@ -44,7 +44,10 @@ spec:
          - containerPort: 443
          - containerPort: 22
         livenessProbe:
-          tcpSocket:
-             port: 22
-          initialDelaySeconds: 10
-          periodSeconds: 10
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - 'ps aux | egrep [s]shd'   
+          initialDelaySeconds: 5  
+          periodSeconds: 1

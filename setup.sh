@@ -6,8 +6,8 @@ then
 	echo "create one time file."
 	touch $FILE
 fi
-minikube config set vm-driver virtualbox
-minikube start --driver=docker --memory 3000 --bootstrapper=kubeadm
+#minikube config set vm-driver virtualbox
+minikube start --driver=docker --bootstrapper=kubeadm
 minikube docker-env
 eval $(minikube -p minikube docker-env)
 kubectl get configmap kube-proxy -n kube-system -o yaml | \
