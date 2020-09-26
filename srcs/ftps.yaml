@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ftps
+  annotations:
+    metallb.universe.tf/address-pool: ftps-ip
+
   labels:
     run: ftps
 spec:
@@ -18,10 +21,6 @@ spec:
     targetPort: 30025
     protocol: TCP
     name: ftps30025
-  - port: 30026
-    targetPort: 30026
-    protocol: TCP
-    name: ftps30026
 
   selector:
     run: ftps
@@ -51,5 +50,4 @@ spec:
         - containerPort: 21
         - containerPort: 20
         - containerPort: 30025
-        - containerPort: 30026
 

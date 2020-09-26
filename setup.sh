@@ -35,5 +35,4 @@ docker build -t telegraf_alpine ./srcs/telegraf/
 docker build -t grafana_alpine ./srcs/grafana/
 kubectl apply -k ./srcs/
 rm srcs/telegraf/telegraf.conf
-
 minikube dashboard
