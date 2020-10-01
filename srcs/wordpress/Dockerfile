@@ -1,4 +1,4 @@
-FROM alpine:3.11.3
+FROM alpine:latest
 
 RUN apk update && apk add vim
 
@@ -27,7 +27,7 @@ RUN wget https://wordpress.org/latest.tar.gz
 RUN tar xzvf latest.tar.gz && mv wordpress /usr/share/wordpress
 
 
-#RUN ln -s /usr/share/wordpress/ /var/www/localhost/htdocs/
+RUN ln -s /usr/share/wordpress/ /var/www/localhost/htdocs/
 
 ADD start.sh /start.sh
 

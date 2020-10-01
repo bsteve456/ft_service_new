@@ -22,7 +22,7 @@ if [ $? == 1 ]; then
 fi
 echo "finish";
 
-mv /usr/share/wordpress/* /var/www/localhost/htdocs/wordpress/
+#mv /usr/share/wordpress/* /var/www/localhost/htdocs/wordpress/
 #rc-service php-fpm7 start
 php-fpm7
 nginx -g 'daemon off;'
