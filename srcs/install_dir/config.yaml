@@ -6,16 +6,17 @@ metadata:
 data:
   config: |
     address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
+    - addresses:
       - 172.17.0.40-172.17.0.50
-    - name: wordpress-ip
+      name: default
       protocol: layer2
-      addresses:
+    - addresses:
       - 172.17.0.60-172.17.0.60
-    - name: ftps-ip
+      name: wordpress-ip
       protocol: layer2
-      addresses:
+      auto-assign: false
+    - addresses:
       - 172.17.0.65-172.17.0.65
-
+      name: ftps-ip
+      protocol: layer2
+      auto-assign: false

@@ -54,19 +54,11 @@ spec:
         ports:
         - containerPort: 5050
           name: wordpress
-          #       volumeMounts:
-          #        - name: wordpress-persistent-storage
-          #          mountPath: /var/www/localhost/htdocs/wordpress
         livenessProbe:
           exec:
             command:
             - /bin/sh
             - -c
-            - 'ps aux | egrep "[p]hp-fpm: master process"'
-          initialDelaySeconds: 3
-          periodSeconds: 2 
-
-          #      volumes:
-          #      - name: wordpress-persistent-storage
-          #        persistentVolumeClaim:
-          #      claimName: wp-pv-claim
+            - 'ps aux | egrep [p]hp-fpm'
+          initialDelaySeconds: 60
+          periodSeconds: 3 
