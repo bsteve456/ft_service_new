@@ -16,6 +16,11 @@ if [ $? == 1 ]; then
 	 mysql -h mysql -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS wordpress';
      done
      echo "good";
+     mysql -h mysql -u root -ppassword -D wordpress -e 'DROP TABLE IF EXISTS wp_commentmeta';
+     while [ $? == 1 ]; do
+     	mysql -h mysql -u root -ppassword -D wordpress -e 'DROP TABLE IF EXISTS wp_commentmeta';
+     done
+     echo "drop table"
      mysql -h mysql -u root -ppassword wordpress < /wordpress.sql;
      while [ $? == 1 ]; do
 	     echo "here";
